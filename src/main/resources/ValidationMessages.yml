@@ -1,0 +1,9 @@
+com:
+  synesis:
+    bcc:
+      structure:
+        message:
+          ValidDesignation: Invalid Designation
+          ValidUserState: Invalid User State
+          ValidUserType: Invalid User Type
+          ValidUserSummary: Invalid User Summary

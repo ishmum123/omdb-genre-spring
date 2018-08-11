@@ -1,0 +1,17 @@
+# =============================================================================================
+# = DATA SOURCE
+# =============================================================================================
+spring:
+  jpa:
+    hibernate.ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        default_schema: structure
+  liquibase.default-schema: structure
+  datasource:
+    url: jdbc:postgresql://localhost:5432/structure
+    username: postgres
+    password: postgres
