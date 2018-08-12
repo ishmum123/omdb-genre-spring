@@ -9,6 +9,8 @@ import com.synesis.bcc.structure.helpers.dataclass.UserSummary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserService {
 
@@ -51,5 +53,9 @@ public class UserService {
 
     public Iterable<User> getUsersByName(String name) {
         return getterComponent.getUsersByName(name);
+    }
+
+    public User findById(UUID uuid) {
+        return getterComponent.findById(uuid);
     }
 }

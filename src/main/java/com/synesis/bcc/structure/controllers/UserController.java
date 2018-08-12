@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("user")
@@ -25,6 +26,11 @@ public class UserController {
     @GetMapping
     public Iterable<User> getUsers() {
         return userService.getUsers();
+    }
+
+    @GetMapping("id/{id}")
+    public User getUser(@PathVariable("id")UUID uuid) {
+        return userService.findById(uuid);
     }
 
     @GetMapping("find")

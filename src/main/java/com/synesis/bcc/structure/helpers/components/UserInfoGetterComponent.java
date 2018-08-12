@@ -6,8 +6,11 @@ import com.synesis.bcc.structure.database.entities.UserType;
 import com.synesis.bcc.structure.database.repositories.UserDetailRepository;
 import com.synesis.bcc.structure.database.repositories.UserRepository;
 import com.synesis.bcc.structure.database.repositories.UserTypeRepository;
+import com.synesis.bcc.structure.helpers.exceptions.ServiceExceptionHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 @Component
 public class UserInfoGetterComponent {
@@ -44,5 +47,9 @@ public class UserInfoGetterComponent {
 
     public Iterable<User> getUsersByName(String name) {
         return userRepository.findByName(name);
+    }
+
+    public User findById(UUID uuid) {
+        return userRepository.findById(uuid).orElseThrow(() -> new ServiceExceptionHolder.UserNotFoundException(uuid));
     }
 }
