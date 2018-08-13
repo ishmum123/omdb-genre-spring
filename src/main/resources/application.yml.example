@@ -10,7 +10,9 @@ spring:
           lob:
             non_contextual_creation: true
         default_schema: structure
-  liquibase.default-schema: structure
+  liquibase:
+    default-schema: structure
+    change-log: classpath:/db/changelog/db.changelog-master.yml
   datasource:
     url: jdbc:postgresql://localhost:5432/structure
     username: postgres
