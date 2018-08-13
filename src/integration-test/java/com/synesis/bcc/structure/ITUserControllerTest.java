@@ -47,7 +47,7 @@ public class ITUserControllerTest {
 	@Test
 	public void shouldReturnAvailableUsers() throws Exception {
 		mockMvc
-				.perform(get("/user"))
+				.perform(get("/users"))
 				.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].id", is("3269c6ad-0b41-4b4c-94d7-26facf399729")))
@@ -58,7 +58,7 @@ public class ITUserControllerTest {
 	@Test
 	public void shouldReturnUserWithId() throws Exception {
 		mockMvc
-				.perform(get("/user/id/3269c6ad-0b41-4b4c-94d7-26facf399729"))
+				.perform(get("/users/3269c6ad-0b41-4b4c-94d7-26facf399729"))
 				.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.id", is("3269c6ad-0b41-4b4c-94d7-26facf399729")))
@@ -68,7 +68,7 @@ public class ITUserControllerTest {
 	@Test
 	public void shouldReturnErrorResponseIfNonExistentIdProvided() throws Exception {
 		mockMvc
-				.perform(get("/user/id/3269c6ad-0b41-4b4c-94d7-26facf399720"))
+				.perform(get("/users/3269c6ad-0b41-4b4c-94d7-26facf399720"))
 				.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.code", is("STR2000")))
@@ -78,7 +78,7 @@ public class ITUserControllerTest {
 	@Test
 	public void shouldReturnErrorResponseIfInvalidIdProvided() throws Exception {
 		mockMvc
-				.perform(get("/user/id/invalid-id"))
+				.perform(get("/users/invalid-id"))
 				.andDo(print())
 				.andExpect(status().isBadRequest())
 				.andExpect(jsonPath("$.code", is("STR1000")))
@@ -90,7 +90,7 @@ public class ITUserControllerTest {
 	@Test
 	public void shouldReturnUserWithFirstname() throws Exception {
 		mockMvc
-				.perform(get("/user/find").param("firstname", "Ishmum"))
+				.perform(get("/users/find").param("firstname", "Ishmum"))
 				.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].id", is("3269c6ad-0b41-4b4c-94d7-26facf399729")))
@@ -101,7 +101,7 @@ public class ITUserControllerTest {
 	@Test
 	public void shouldReturnEmptyArrayIfNonExistentNameProvided() throws Exception {
 		mockMvc
-				.perform(get("/user/find").param("firstname", "non-existent"))
+				.perform(get("/users/find").param("firstname", "non-existent"))
 				.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$", hasSize(0)));
@@ -110,7 +110,7 @@ public class ITUserControllerTest {
 	@Test
 	public void shouldReturnAvailableUserDetails() throws Exception {
 		mockMvc
-				.perform(get("/user/detail"))
+				.perform(get("/users/detail"))
 				.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[*].type.name", contains("admin")))
@@ -122,7 +122,7 @@ public class ITUserControllerTest {
 	@Test
 	public void shouldReturnAvailableUserTypes() throws Exception {
 		mockMvc
-				.perform(get("/user/type"))
+				.perform(get("/users/type"))
 				.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[*].name", hasItems("admin", "employee", "hr")))
@@ -137,7 +137,7 @@ public class ITUserControllerTest {
 
 		mockMvc
 				.perform(
-						post("/user/type")
+						post("/users/type")
 								.contentType(MediaType.APPLICATION_JSON)
 								.content(objectMapper.writeValueAsString(type))
 				)
@@ -153,7 +153,7 @@ public class ITUserControllerTest {
 
 		mockMvc
 				.perform(
-						post("/user/type")
+						post("/users/type")
 								.contentType(MediaType.APPLICATION_JSON)
 								.content(objectMapper.writeValueAsString(type))
 				)
@@ -181,7 +181,7 @@ public class ITUserControllerTest {
 
         mockMvc
                 .perform(
-                        post("/user")
+                        post("/users")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsString(userSummary))
                 )
@@ -203,7 +203,7 @@ public class ITUserControllerTest {
 
         mockMvc
                 .perform(
-                        post("/user")
+                        post("/users")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsString(userSummary))
                 )

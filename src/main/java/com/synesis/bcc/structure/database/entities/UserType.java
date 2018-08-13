@@ -1,9 +1,22 @@
 package com.synesis.bcc.structure.database.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.Set;
+
+@Data
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "user_types")
 public class UserType extends MappedBasicDetail {
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "type")
+    private Set<UserDetail> userDetailSet;
+
 }

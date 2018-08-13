@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("users")
 public class UserController {
 
     private final UserService userService;
@@ -28,9 +28,9 @@ public class UserController {
         return userService.getUsers();
     }
 
-    @GetMapping("id/{id}")
-    public User getUser(@PathVariable("id")UUID uuid) {
-        return userService.findById(uuid);
+    @GetMapping("{id}")
+    public User getUser(@PathVariable UUID id) {
+        return userService.findById(id);
     }
 
     @GetMapping("find")
