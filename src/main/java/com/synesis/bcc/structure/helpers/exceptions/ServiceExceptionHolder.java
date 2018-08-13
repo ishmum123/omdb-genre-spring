@@ -16,13 +16,13 @@ public class ServiceExceptionHolder {
 
     public static class ResourceNotFoundException extends ServiceException {
         public ResourceNotFoundException(String message) {
-            super(1000, message);
+            super(2000, message);
         }
     }
 
     public static class UserNotFoundException extends ResourceNotFoundException {
         public UserNotFoundException(UUID uuid) {
-            super("No User found with id " + uuid);
+            super("No User found with ID: " + uuid);
         }
     }
 

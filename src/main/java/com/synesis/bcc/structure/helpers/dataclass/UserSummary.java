@@ -12,22 +12,23 @@ import javax.validation.constraints.*;
 @ValidUserSummary
 public class UserSummary {
 
-    @NotNull
+    @NotBlank
     @Size(max = 50)
     private String firstname;
 
     @Size(max = 50)
     private String middlename;
 
-    @NotNull
+    @NotBlank
     @Size(max = 50)
     private String lastname;
 
+    @NotBlank
     @Email
     @Size(max = 100)
     private String email;
 
-    @NotNull
+    @NotBlank
     @Size(max = 256, min = 6)
     private String password;
 

@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidUserState {
-    String message() default "{com.synesis.bcc.structure.message.ValidUserState}";
+    String message() default "{invalid}";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

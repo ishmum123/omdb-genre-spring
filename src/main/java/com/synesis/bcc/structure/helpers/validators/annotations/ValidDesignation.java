@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidDesignation {
-    String message() default "{com.synesis.bcc.structure.message.ValidDesignation}";
+    String message() default "{invalid}";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

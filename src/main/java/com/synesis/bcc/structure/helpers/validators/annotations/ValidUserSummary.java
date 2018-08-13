@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidUserSummary {
-    String message() default "{com.synesis.bcc.structure.message.ValidUserType}";
+    String message() default "user data {invalid}";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

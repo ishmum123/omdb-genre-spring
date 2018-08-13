@@ -3,18 +3,20 @@
 # =============================================================================================
 spring:
   jpa:
-    hibernate.ddl-auto: validate
+    hibernate.ddl-auto: none
     properties:
       hibernate:
         jdbc:
           lob:
             non_contextual_creation: true
-        default_schema: structure
+        default_schema: structuretest
   liquibase:
-    default-schema: structure
+    default-schema: structuretest
+    drop-first: true
+    contexts: test
     change-log: classpath:/db/changelog/db.changelog-master.yml
   datasource:
-    url: jdbc:postgresql://localhost:5432/structure
+    url: jdbc:postgresql://localhost:5434/structuretest
     username: postgres
     password: postgres
   mvc:
