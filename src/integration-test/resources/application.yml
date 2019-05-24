@@ -9,14 +9,14 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
-        default_schema: structuretest
+        default_schema: omdb_test
   liquibase:
-    default-schema: structuretest
+    default-schema: omdb_test
     drop-first: true
     contexts: test
     change-log: classpath:/db/changelog/db.changelog-master.yml
   datasource:
-    url: jdbc:postgresql://localhost:5434/structuretest
+    url: jdbc:postgresql://localhost:5432/omdb
     username: postgres
     password: postgres
   mvc:
