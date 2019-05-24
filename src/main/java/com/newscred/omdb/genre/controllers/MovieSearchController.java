@@ -19,10 +19,9 @@ public class MovieSearchController {
     private final MovieSearchService movieSearchService;
 
     @GetMapping
-    public List<Movie> getMovies(@RequestParam("search") final String search) {
-        if (search == null || search.isEmpty())
-            throw new ServiceExceptionHolder.IllegalSearchParamException("Query String must not be Empty");
-        else if (search.contains(","))
+    public List<Movie> getMovies(@RequestParam("search") final String search,
+                                 @RequestParam(value = "page", defaultValue = "1") final int page) {
+        if (search.contains(","))
             throw new ServiceExceptionHolder.IllegalSearchParamException("Query String must not contain char: ','");
 
         return movieSearchService.getMovies(search);

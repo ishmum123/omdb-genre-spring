@@ -1,6 +1,7 @@
 package com.newscred.omdb.genre.controllers;
 
 import com.newscred.omdb.genre.helpers.dataclass.UserShortSummary;
+import com.newscred.omdb.genre.helpers.exceptions.ServiceExceptionHolder;
 import com.newscred.omdb.genre.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,10 @@ public class UserController {
 
     // TODO: Provide a token for checking requests
     @GetMapping("sign-in/{email}/{password}")
-    public Optional<UserShortSummary> signIn(@PathVariable String email, @PathVariable String password) {
-        return userService.signIn(email, password);
+    public UserShortSummary signIn(@PathVariable String email, @PathVariable String password) {
+        return userService.signIn(email, password)
+                .orElseThrow(() -> new ServiceExceptionHolder
+                        .NonExistentCredentialsException("Invalid Credentials"));
     }
 
 }

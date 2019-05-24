@@ -26,4 +26,10 @@ public class ServiceExceptionHolder {
         }
     }
 
+    public static class NonExistentCredentialsException extends ServiceException {
+        public NonExistentCredentialsException(String message) {
+            super(4030, message);
+        }
+    }
+
 }

@@ -53,6 +53,12 @@ public class ExceptionHandlers {
         return getProcessedApiErrorResponse(new ApiErrorResponse("Invalid Request Parameters", ex));
     }
 
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler(ServiceExceptionHolder.NonExistentCredentialsException.class)
+    public ApiErrorResponse handleNonExistentCredentials(final ServiceExceptionHolder.NonExistentCredentialsException ex) {
+        return getProcessedApiErrorResponse(new ApiErrorResponse("No such User exists", ex));
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ApiErrorResponse handleInvalidRequestParam(final MethodArgumentTypeMismatchException ex) {
