@@ -20,9 +20,9 @@ public class ServiceExceptionHolder {
         }
     }
 
-    public static class UserNotFoundException extends ResourceNotFoundException {
-        public UserNotFoundException(UUID uuid) {
-            super("No User found with ID: " + uuid);
+    public static class IllegalSearchParamException extends ServiceException {
+        public IllegalSearchParamException(String message) {
+            super(4000, message);
         }
     }
 

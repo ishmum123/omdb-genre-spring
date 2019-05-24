@@ -35,12 +35,6 @@ public class ExceptionHandlers {
         this.serviceConfiguration = serviceConfiguration;
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @ExceptionHandler(ServiceExceptionHolder.UserNotFoundException.class)
-    public ApiErrorResponse handleUserNotFoundException(final ServiceExceptionHolder.UserNotFoundException ex) {
-        return getProcessedApiErrorResponse(new ApiErrorResponse(ex.getMessage(), ex));
-    }
-
     @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     public ApiErrorResponse handleUnsupportedMediaType(final HttpMediaTypeNotSupportedException ex) {
@@ -51,6 +45,12 @@ public class ExceptionHandlers {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ApiErrorResponse handleValidationError(final HttpMessageNotReadableException ex) {
         return getProcessedApiErrorResponse(new ApiErrorResponse("Could not read the request body"));
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ServiceExceptionHolder.IllegalSearchParamException.class)
+    public ApiErrorResponse handleIllegalSearchParam(final ServiceExceptionHolder.IllegalSearchParamException ex) {
+        return getProcessedApiErrorResponse(new ApiErrorResponse("Invalid Request Parameters", ex));
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
