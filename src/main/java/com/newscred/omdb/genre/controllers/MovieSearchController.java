@@ -19,7 +19,7 @@ public class MovieSearchController {
     private final MovieSearchService movieSearchService;
 
     @GetMapping
-    public List<Map<String, Object>> getMovies(@RequestParam("search") final String search,
+    public List<Map<String, Object>> getMovies(@RequestParam(value = "search", defaultValue = "") final String search,
                                                @RequestParam(value = "page", defaultValue = "1") int page) {
         if (search.contains(","))
             throw new ServiceExceptionHolder.IllegalSearchParamException("Query String must not contain char: ','");
