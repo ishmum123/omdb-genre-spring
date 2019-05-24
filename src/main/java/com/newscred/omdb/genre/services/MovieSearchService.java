@@ -1,10 +1,12 @@
 package com.newscred.omdb.genre.services;
 
+import com.newscred.omdb.genre.helpers.dataclass.Movie;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,9 +27,8 @@ public class MovieSearchService {
         return dataset.filter(dataset.col("Genre").contains(search)).collectAsList().stream()
                 .map(row -> {
                     final Map<String, Object> map = new HashMap<>();
-                    map.put("Genre", row.getAs(row.fieldIndex("Genre")));
-                    map.put("Title", row.getAs(row.fieldIndex("Title")));
-                    map.put("Year", row.getAs(row.fieldIndex("Year")));
+                    for (Field field: Movie.class.getDeclaredFields())
+                        map.put(field.getName(), row.getAs(row.fieldIndex(field.getName())));
                     return map;
                 })
                 .collect(Collectors.toList())
