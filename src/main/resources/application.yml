@@ -2,21 +2,6 @@
 # = DATA SOURCE
 # =============================================================================================
 spring:
-  jpa:
-    hibernate.ddl-auto: validate
-    properties:
-      hibernate:
-        jdbc:
-          lob:
-            non_contextual_creation: true
-        default_schema: structure
-  liquibase:
-    default-schema: structure
-    change-log: classpath:/db/changelog/db.changelog-master.yml
-  datasource:
-    url: jdbc:postgresql://localhost:5432/structure
-    username: postgres
-    password: postgres
   mvc:
     throw-exception-if-no-handler-found: true
   resources:
@@ -28,3 +13,16 @@ spring:
 service:
   properties:
     short-code: STR
+  user:
+    one:
+      name: Ishmum Jawad Khan
+      email: ishmumkhan@gmail.com
+      password: RandomPass1
+    two:
+      name: A Unique Person
+      email: unique@mail.com
+      password: RandomPass2
+    three:
+      name: Another Unique Person
+      email: veryunique@mail.com
+      password: RandomPass3
