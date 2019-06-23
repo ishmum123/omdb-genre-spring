@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: populate dummy movies
+      author: akram
+      context: faker
+      changes:
+        - loadData:
+            file: data/movie.csv
+            relativeToChangelogFile: true
+            separator: ";"
+            tableName: movie
+            context: dev
+            columns:
+                - column:
+                    name: id
+                    type: numeric
+                - column:
+                    name: title
+                    type: string
+                - column:
+                    name: language
+                    type: string
+                - column:
+                    name: year
+                    type: string
