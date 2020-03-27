@@ -6,6 +6,9 @@ databaseChangeLog:
       file: structure/add_designation_to_user.changelog.yml
       relativeToChangelogFile: true
   - include:
+      file: structure/create_movie_table.yml
+      relativeToChangelogFile: true
+  - include:
       file: seed/populate_user_information.changelog.yml
       relativeToChangelogFile: true
   - include:
@@ -13,4 +16,7 @@ databaseChangeLog:
       relativeToChangelogFile: true
   - include:
       file: seed/populate_users.changelog.yml
+      relativeToChangelogFile: true
+  - include:
+      file: seed/populate_movies.changelog.yml
       relativeToChangelogFile: true

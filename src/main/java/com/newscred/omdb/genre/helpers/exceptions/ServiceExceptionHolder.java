@@ -26,4 +26,9 @@ public class ServiceExceptionHolder {
         }
     }
 
+    public static class MovieRequestException extends ServiceException {
+        public MovieRequestException(int code, String message) {
+            super(code, message);
+        }
+    }
 }
